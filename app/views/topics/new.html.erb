@@ -1,0 +1,7 @@
+<h1>Nieuwe Topic</h1>
+
+<%= form_for @topic do |f| %>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title %>
+  <%= f.submit "Topic aanmaken", :data => { :disable_with => 'Topic wordt aangemaakt...' }  %>
+<% end %>
