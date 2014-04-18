@@ -1,2 +1,7 @@
-<%= link_to "Registreren", new_user_registration_path %>
-<%= link_to "Inloggen", new_user_session_path %>
+<div class="row"> 
+  <div class="col-xs-6 col-xs-offset-3">
+    <%= render :template => "devise/sessions/new" %>
+  </div> 
+</div>
+
+
