@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @message = Message.new( :topic => @topic )
+    @message = Message.new( :topic => @topic, :user_id => current_user )
   end
 
   def new

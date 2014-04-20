@@ -1,32 +1,34 @@
 <div class="row">
   <div class="col-xs-12">
+    <%= link_to "Terug", topics_path, :class => "btn btn-default" %>
     <h1 class="page-header"><%= @topic.title %></h1>
   </div>
 </div>
+
 <div class="row">
-  <div class="col-xs-12">
-    <%= link_to "Terug", topics_path, :class => "btn btn-default" %>
+  <div class="col-xs-12 col-md-4">
+    <%= render( :partial => "topic_info") %>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-6">
-      <%= render( :partial => "message", :collection => @topic.messages ) %>
-      
-      <%= form_for @message do |f| %>
+  <div class="col-xs-12 col-md-8">
+      <% if @topic.messages.count > 0 %>
+        <% @topic.messages.each do |message| %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= message.user.email if message.user %>
+            </h4>
+            <span><%= format_date(message.created_at) %></span>
+            <p><%=raw message.content %></p>
+          </div>
+        </div>
+        <% end %>
 
-        <%= f.hidden_field :topic_id %>
-        <%= f.label :content, "Content" %>
-        <%= f.text_area :content %>
-        <%= f.submit "Submit" %>
-
+      <% else %>
+        <h4>Schrijf als eerste een bericht!</h4>
       <% end %>
+      
+
+    <%= render( :partial => "message_form" ) %>
   </div>
-  <div class="col-xs-6">
-    
-    <%= @topic.title %>
-    <%= @topic.description %>
-    <%= format_date(@topic.created_at) %>
-    <%= format_date(@topic.updated_at) %>
-    <%= @topic.user.email %>
-  </div>
+
 </div>

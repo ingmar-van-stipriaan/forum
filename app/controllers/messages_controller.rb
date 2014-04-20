@@ -1,22 +1,14 @@
 class MessagesController < ApplicationController
-  def index
-    @messages = Message.sorted
-  end
-
-  def new
-    @message = Message.new
-  end
 
   def create
-    @message = Message.new(params.require(:message).permit(:content, :user_id, :topic_id))
+    @topic = Topic.find(params[:topic_id])
+    @message = current_user.messages.new(params.require(:message).permit(:content, :user_id, :topic_id))
     if @message.save
       flash[:notice] = "Bericht succesvol aangemaakt"
-      redirect_to @topic
+      redirect_to topic_path(@topic)
     else
       render("new")
     end
   end
 
-  def edit
-  end
 end
