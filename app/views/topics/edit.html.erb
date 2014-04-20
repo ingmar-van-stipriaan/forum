@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-xs-6">
     <h1 class="page-header">Nieuwe Topic</h1>
-    <%= form_for @topic, { :action => "create", :user_id => current_user.id } do |f| %>
+    <%= form_for @topic, { :action => "update", :user_id => current_user.id } do |f| %>
     <%= f.hidden_field :user_id %>
     <div class="form-group">
       <%= f.label :title, "Titel" %>

@@ -1,5 +1,7 @@
 Forum::Application.routes.draw do
   
+  resources :comments
+
   devise_for :users
   
   # The priority is based upon order of creation: first created -> highest priority.
@@ -11,7 +13,7 @@ Forum::Application.routes.draw do
   end
 
   # You can have the root of your site routed with "root"
-
+  root "devise/sessions#new"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -22,7 +24,12 @@ Forum::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :topics
+  resources :users
+
+  resources :topics do
+    resources :messages
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
