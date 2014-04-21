@@ -4,11 +4,11 @@ class TopicsController < ApplicationController
   before_action :unless_current_user, :only => [:edit, :update, :delete, :destroy]
 
   def index
-    @topics = Topic.all
+    @topics = TopicDecorator.decorate_collection(Topic.order("created_at DESC"))
   end
 
   def show
-    @topic = Topic.find(params[:id])
+    @topic = Topic.find(params[:id]).decorate
     @message = Message.new( :topic => @topic, :user_id => current_user )
   end
 

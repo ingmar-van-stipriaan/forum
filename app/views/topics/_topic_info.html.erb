@@ -14,18 +14,19 @@
     </tr>
     <tr>
       <th>Aangemaakt op</th>
-      <td><%= format_date(@topic.created_at) %></td>
+      <td><%= @topic.created_at %></td>
     </tr>
     <tr>
       <th>Geupdate op</th>
-      <td><%= format_date(@topic.updated_at) %></td>
+      <td><%= @topic.updated_at %></td>
     </tr>
+
     <% if @topic.user.id == current_user.id %>
     <tr>
       <th>Opties</th>
       <td>
-        <%= link_to "Bewerk", edit_topic_path(@topic.id), :class => "btn btn-default" %>
-        <%= link_to "Verwijder", topic_path(@topic.id), :method => :delete, :confirm => "Weet u dit zeker?", :class => "btn btn-danger" %>
+        <%= @topic.edit_link %>
+        <%= @topic.delete_link %>
       </td>
     </tr>
 

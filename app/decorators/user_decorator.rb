@@ -1,4 +1,4 @@
-class StaticPagesDecorator < Draper::Decorator
+class UserDecorator < ApplicationDecorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through

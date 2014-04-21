@@ -7,5 +7,8 @@ class ApplicationController < ActionController::Base
     topics_path
   end
 
-  
+  def current_user
+    super.decorate unless super.nil?
+  end
+    
 end

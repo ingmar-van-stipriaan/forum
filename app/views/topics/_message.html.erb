@@ -1,0 +1,20 @@
+<% if @topic.messages.count > 0 %>
+<% @topic.messages.each do |message| %>
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= message.user.email if message.user %>
+    </h4>
+    <span><%= message.created_at %></span>
+    <p><%=raw message.content %></p>
+  </div>
+  <% if message.user.id == current_user.id %>
+    <!-- How to add this to a decorator? -->
+    <%= link_to "Verwijder", topic_message_path(@topic.id, message.id), :method => :delete, :confirm => "Zeker weten?" %>
+  <% end %>
+</div>
+<% end %>
+
+<% else %>
+<h4>Schrijf als eerste een bericht!</h4>
+<% end %>

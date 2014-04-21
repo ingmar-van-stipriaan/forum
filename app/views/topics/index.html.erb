@@ -24,14 +24,14 @@
         <% @topics.each do |topic| %>
           <tr>
             <td><%= link_to topic.title, topic_path(topic.id) %></td>
-            <td><!-- show messages count --></td>
-            <td><%= format_date(topic.created_at) %></td>
-            <td><%= format_date(topic.updated_at) %></td>
+            <td><%= topic.messages.count %></td>
+            <td><%= topic.created_at %></td>
+            <td><%= topic.updated_at %></td>
             <td><%= topic.user.email if topic.user %></td>
             <td>
               <% if topic.user.id == current_user.id %>
-                <%= link_to "Bewerk", edit_topic_path(topic.id), :class => "btn btn-default" %>
-                <%= link_to "Verwijder", topic_path(topic.id), :method => :delete, :confirm => "Weet u dit zeker?", :class => "btn btn-danger" %>
+                <%= topic.edit_link %>
+                <%= topic.delete_link %>
               <% end %>
             </td>
           </tr>
