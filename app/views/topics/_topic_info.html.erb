@@ -21,7 +21,7 @@
       <td><%= @topic.updated_at %></td>
     </tr>
 
-    <% if @topic.user.id == current_user.id %>
+    <% if @topic.user_is(current_user) %>
     <tr>
       <th>Opties</th>
       <td>

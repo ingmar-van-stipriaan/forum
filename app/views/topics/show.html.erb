@@ -13,7 +13,10 @@
   <div class="col-xs-12 col-md-8">
 
     <!-- display messages -->
-    <%= render( :partial => "message" ) %>
+    <div class="messages">
+      <%= render( :partial => "message" ) %>
+    </div>
+    
 
     <!-- display message form -->
     <%= render( :partial => "message_form", :topic => @topic ) %>

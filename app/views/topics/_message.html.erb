@@ -8,10 +8,11 @@
     <span><%= message.created_at %></span>
     <p><%=raw message.content %></p>
   </div>
-  <% if message.user_message(current_user) %>
-    <!-- How to add this to a decorator? -->
-    <%= message.remove_link %>
-    <%# link_to "Verwijder", topic_message_path(@topic.id, message.id), :method => :delete, :confirm => "Zeker weten?" %>
+  <!-- omdat ik hier respond_to :js gebruik, herkent hij de decorator functies niet -->
+  <% if message.user.id == current_user.id %>
+    <!-- decorator -->
+    <%= link_to "Verwijder", topic_message_path(@topic.id, message.id), :method => :delete, :confirm => "Zeker weten?", :remote => true %>
+
   <% end %>
 </div>
 <% end %>

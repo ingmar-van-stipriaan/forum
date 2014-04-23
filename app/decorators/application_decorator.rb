@@ -12,6 +12,8 @@ class ApplicationDecorator < Draper::Decorator
     end
   end
 
-  
+  def user_is(the_user)
+    model.user.id == the_user.id
+  end
 
 end

@@ -29,7 +29,7 @@
             <td><%= topic.updated_at %></td>
             <td><%= topic.user.email if topic.user %></td>
             <td>
-              <% if topic.user.id == current_user.id %>
+              <% if topic.user_is(current_user) %>
                 <%= topic.edit_link %>
                 <%= topic.delete_link %>
               <% end %>
