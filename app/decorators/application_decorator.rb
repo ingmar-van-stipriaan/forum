@@ -12,5 +12,6 @@ class ApplicationDecorator < Draper::Decorator
     end
   end
 
+  
 
 end

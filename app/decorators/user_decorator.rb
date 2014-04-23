@@ -1,4 +1,6 @@
 class UserDecorator < ApplicationDecorator
+  decorates_association :topics
+  decorates_association :messages
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through

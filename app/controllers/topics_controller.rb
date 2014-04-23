@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id]).decorate
     @message = Message.new( :topic => @topic, :user_id => current_user )
+    @user = User.find(current_user.id).decorate
   end
 
   def new

@@ -8,9 +8,10 @@
     <span><%= message.created_at %></span>
     <p><%=raw message.content %></p>
   </div>
-  <% if message.user.id == current_user.id %>
+  <% if message.user_message(current_user) %>
     <!-- How to add this to a decorator? -->
-    <%= link_to "Verwijder", topic_message_path(@topic.id, message.id), :method => :delete, :confirm => "Zeker weten?" %>
+    <%= message.remove_link %>
+    <%# link_to "Verwijder", topic_message_path(@topic.id, message.id), :method => :delete, :confirm => "Zeker weten?" %>
   <% end %>
 </div>
 <% end %>
